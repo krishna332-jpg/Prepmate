@@ -168,14 +168,12 @@ function Cell({ value, onChange, placeholder, width, type = 'text', bold, link }
 // ── Sticky Note with rich text formatting ──────────────────────────────────
 function StickyNote() {
   const editorRef = useRef(null);
-  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     try {
       const saved = localStorage.getItem(LS_NOTE);
       if (saved && editorRef.current) editorRef.current.innerHTML = saved;
     } catch(e) {}
-    setLoaded(true);
   }, []);
 
   const handleInput = () => {
