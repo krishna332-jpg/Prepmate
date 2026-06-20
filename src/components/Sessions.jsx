@@ -1,7 +1,4 @@
-import { useState } from 'react';
-
 const scoreColor = s => s>=75?'#50e3c2':s>=50?'#f5a623':'#e00';
-
 export function Sessions({ sessions, onView, onNewInterview }) {
   return (
     <div style={{ maxWidth:'900px', margin:'0 auto', padding:'clamp(24px,4vw,48px) clamp(16px,3vw,32px)' }}>
@@ -13,13 +10,12 @@ export function Sessions({ sessions, onView, onNewInterview }) {
         <button onClick={onNewInterview} style={{ padding:'9px 20px', borderRadius:'8px', border:'none', background:'#fff', color:'#000', fontSize:'13px', fontFamily:'Inter,sans-serif', fontWeight:600, cursor:'pointer', transition:'background 0.15s' }}
           onMouseEnter={e=>e.currentTarget.style.background='#ededed'}
           onMouseLeave={e=>e.currentTarget.style.background='#fff'}
-        >New Interview →</button>
+        >New Interview</button>
       </div>
-
       {sessions.length===0 ? (
         <div style={{ border:'1px dashed rgba(255,255,255,0.08)', borderRadius:'12px', padding:'80px 40px', textAlign:'center' }}>
           <p style={{ fontSize:'16px', color:'#444', margin:'0 0 20px' }}>No sessions yet.</p>
-          <button onClick={onNewInterview} style={{ padding:'9px 20px', borderRadius:'8px', border:'1px solid rgba(255,255,255,0.12)', background:'transparent', color:'#fff', fontSize:'13px', fontFamily:'Inter,sans-serif', cursor:'pointer' }}>Start your first interview →</button>
+          <button onClick={onNewInterview} style={{ padding:'9px 20px', borderRadius:'8px', border:'1px solid rgba(255,255,255,0.12)', background:'transparent', color:'#fff', fontSize:'13px', fontFamily:'Inter,sans-serif', cursor:'pointer' }}>Start your first interview</button>
         </div>
       ) : (
         <div style={{ display:'flex', flexDirection:'column', gap:'6px' }}>
