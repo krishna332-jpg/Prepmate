@@ -355,10 +355,11 @@ function Label({ children }) {
 function SearchInput({ value, onChange, onFocus, onBlur, placeholder, selected }) {
   return (
     <div style={{ position: 'relative' }}>
-      <input value={value} onChange={onChange} onFocus={onFocus} onBlur={onBlur} placeholder={placeholder}
+      <input value={value} placeholder={placeholder}
+        onChange={onChange}
+        onFocus={e => { e.target.style.borderColor = 'rgba(255,255,255,0.35)'; onFocus?.(e); }}
+        onBlur={e => { e.target.style.borderColor = selected ? 'rgba(255,255,255,0.35)' : 'rgba(255,255,255,0.1)'; onBlur?.(e); }}
         style={{ width: '100%', background: '#0a0a0a', border: `1px solid ${selected ? 'rgba(255,255,255,0.35)' : 'rgba(255,255,255,0.1)'}`, borderRadius: '8px', padding: '10px 36px 10px 36px', color: '#fff', fontSize: '13px', fontFamily: 'Inter,sans-serif', outline: 'none', boxSizing: 'border-box', transition: 'border-color 0.15s' }}
-        onFocus={e => e.target.style.borderColor = 'rgba(255,255,255,0.35)'}
-        onBlur={e => e.target.style.borderColor = selected ? 'rgba(255,255,255,0.35)' : 'rgba(255,255,255,0.1)'}
       />
       <span style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#333', fontSize: '14px' }}>⌕</span>
       {selected && <span style={{ position: 'absolute', right: '12px', top: '50%', transform: 'translateY(-50%)', color: '#fff', fontSize: '13px' }}>✓</span>}
