@@ -5,7 +5,6 @@ export function Interview({ company, role, questions, qIndex, chatLog, aiThinkin
   const [currentQ,   setCurrentQ]   = useState(0);
   const [mode,       setMode]       = useState('voice'); // voice | text
   const [done,       setDone]       = useState(false);
-  const [ratings,    setRatings]    = useState({});
 
   // Speech (AI asking the question)
   const [aiSpeaking, setAiSpeaking] = useState(false);
@@ -58,6 +57,7 @@ export function Interview({ company, role, questions, qIndex, chatLog, aiThinkin
       speakQuestion(q.question || q);
     }
     return () => { window.speechSynthesis.cancel(); };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentQ, mode]);
 
   useEffect(() => () => { stopAll(); window.speechSynthesis.cancel(); }, []);
@@ -190,7 +190,6 @@ export function Interview({ company, role, questions, qIndex, chatLog, aiThinkin
 
   // ── Done screen ──
   if (done) {
-    const fbList = qs.map((_, i) => ratings[i]).filter(Boolean);
     return (
       <div style={{ maxWidth:'600px', margin:'0 auto', padding:'clamp(32px,6vh,80px) clamp(16px,4vw,32px)', textAlign:'center' }}>
         <div style={{ fontSize:'11px', color:'#333', letterSpacing:'0.1em', fontFamily:'JetBrains Mono,monospace', marginBottom:'16px' }}>SESSION COMPLETE</div>
